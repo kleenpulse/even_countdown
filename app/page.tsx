@@ -120,7 +120,7 @@ export default function Home() {
 				</div>
 				<div
 					className={cn(
-						"fixed inset-0 transition-colors delay-100 duration-700 opacity-50 ",
+						"fixed inset-0 transition-colors delay-100 duration-700  ",
 						{
 							"bg-[#62a0f7]": currentItem === "badge",
 							"bg-[#2bc7ee]": currentItem === "cover",
@@ -131,7 +131,8 @@ export default function Home() {
 							"bg-[#ffffff]": currentItem === "mappa",
 							"bg-[#d001f4]": currentItem === "erenPurple",
 							"bg-[#f4af01]": currentItem === "annie",
-						}
+						},
+						isLight ? "opacity-70" : "opacity-40"
 					)}
 				/>
 				<Image
