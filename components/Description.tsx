@@ -9,9 +9,9 @@ type Props = {
 };
 const Description = ({ currentItem, text }: Props) => {
 	return (
-		<p className="max-w-2xl text-centers text-lg lg:text-xl mb-8 max-sm:flex flex-col items-center gap-3 max-[400px]:text-[12px] max-sm:text-sm">
+		<p className="max-w-2xl text-centers text-lg lg:text-xl mb-8 max-sm:flex flex-col items-center gap-3">
 			<span>
-				Join us for an <b>Attack on Titan</b> celebration event by{" "}
+				An <b>Attack on Titan</b> event by{" "}
 				<strong
 					className={cn("transition-colors duration-300", {
 						"text-[#62a0f7]": currentItem === "badge",
