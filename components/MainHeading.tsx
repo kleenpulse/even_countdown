@@ -1,29 +1,29 @@
-import { Character, Framework } from "@/utils/framework";
+import { type Character } from "@/utils/items";
 import { cn } from "@/utils/tailwind-utils";
 import { handleMouse } from "@/utils/text-effect";
 import React from "react";
 
 type Props = {
-	currentFramework: Framework | Character;
+	currentItem: Character;
 	text: string;
 };
 
-const MainHeading = ({ currentFramework, text }: Props) => {
+const MainHeading = ({ currentItem, text }: Props) => {
 	return (
 		<div className="w-full justify-center items-center mb-8 uppercase sm:flex grid place-content-center  ">
 			<h1
 				className={cn(
 					"transition-colors duration-300 w-full sm:min-w-[200px]  font-bold opacity-80",
 					{
-						"text-[#62a0f7]": currentFramework === "badge",
-						"text-[#2bc7ee]": currentFramework === "cover",
-						"text-[#06f27c]": currentFramework === "erenGreen",
-						"text-orange-500": currentFramework === "leviOrange",
-						"text-[#d80a0a]": currentFramework === "mikasa",
-						"text-[#ff6a00]": currentFramework === "levi",
-						"text-[#e0e0e0]": currentFramework === "mappa",
-						"text-[#f401bf]": currentFramework === "erenPurple",
-						"text-[#f4af01]": currentFramework === "annie",
+						"text-[#62a0f7]": currentItem === "badge",
+						"text-[#2bc7ee]": currentItem === "cover",
+						"text-[#06f27c]": currentItem === "erenGreen",
+						"text-orange-500": currentItem === "leviOrange",
+						"text-[#d80a0a]": currentItem === "mikasa",
+						"text-[#ff6a00]": currentItem === "levi",
+						"text-[#e0e0e0]": currentItem === "mappa",
+						"text-[#f401bf]": currentItem === "erenPurple",
+						"text-[#f4af01]": currentItem === "annie",
 					},
 					text.length > 17
 						? "xl:text-7xl min-[920px]:text-6xl sm:text-4xl text-3xl max-[460px]:text-2xl max-[368px]:text-xl"

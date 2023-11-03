@@ -1,34 +1,34 @@
 import React from "react";
-import FrameRotation from "./FrameRotation";
+import ItemRotation from "./ItemRotation";
 import { cn } from "@/utils/tailwind-utils";
-import { Character, Framework } from "@/utils/framework";
+import { Character } from "@/utils/items";
 
 type Props = {
-	currentFramework: Framework | Character;
+	currentItem: Character;
 	text: string;
 };
-const Description = ({ currentFramework, text }: Props) => {
+const Description = ({ currentItem, text }: Props) => {
 	return (
 		<p className="max-w-2xl text-centers text-lg lg:text-xl mb-8 max-sm:flex flex-col items-center gap-3 max-[400px]:text-[12px] max-sm:text-sm">
 			<span>
 				Join us for an <b>Attack on Titan</b> celebration event by{" "}
 				<strong
 					className={cn("transition-colors duration-300", {
-						"text-[#62a0f7]": currentFramework === "badge",
-						"text-[#2bc7ee]": currentFramework === "cover",
-						"text-[#06f27c]": currentFramework === "erenGreen",
-						"text-orange-500": currentFramework === "leviOrange",
-						"text-[#ff0c0c]": currentFramework === "mikasa",
-						"text-[#ff6a00]": currentFramework === "levi",
-						"text-[#ffffff]": currentFramework === "mappa",
-						"text-[#d001f4]": currentFramework === "erenPurple",
-						"text-[#f4af01]": currentFramework === "annie",
+						"text-[#62a0f7]": currentItem === "badge",
+						"text-[#2bc7ee]": currentItem === "cover",
+						"text-[#06f27c]": currentItem === "erenGreen",
+						"text-orange-500": currentItem === "leviOrange",
+						"text-[#ff0c0c]": currentItem === "mikasa",
+						"text-[#ff6a00]": currentItem === "levi",
+						"text-[#ffffff]": currentItem === "mappa",
+						"text-[#d001f4]": currentItem === "erenPurple",
+						"text-[#f4af01]": currentItem === "annie",
 					})}
 				>
 					{text}
 				</strong>{" "}
 			</span>
-			{/* <FrameRotation key={2} isDesc currentFramework={currentFramework} /> */}
+			{/* <ItemRotation key={2} isDesc currentItem={currentItem} /> */}
 		</p>
 	);
 };

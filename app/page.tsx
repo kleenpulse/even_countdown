@@ -4,14 +4,14 @@ import CountdownTimer from "@/components/CountdownTimer";
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { Character, Framework, characterNames } from "@/utils/framework";
+import { Character, characterNames } from "@/utils/items";
 import { cn } from "@/utils/tailwind-utils";
 import Loading from "./loading";
 import useMousePosition from "@/useMousePos";
 
 import MainHeading from "@/components/MainHeading";
 import Description from "@/components/Description";
-import FrameRotation from "@/components/FrameRotation";
+import ItemRotation from "@/components/ItemRotation";
 import Link from "next/link";
 
 export default function Home() {
@@ -30,9 +30,7 @@ export default function Home() {
 			localStorage.setItem("loaded", "true");
 		}, 5000);
 	}, []);
-	const [currentFramework, setCurrentFramework] = useState<
-		Framework | Character
-	>(characterNames[0]);
+	const [currentItem, setCurrentItem] = useState<Character>(characterNames[0]);
 	const [showBG, setShowBG] = useState(false);
 	const [hideTimer, sethideTimer] = useState(true);
 
@@ -40,7 +38,7 @@ export default function Home() {
 		let currentIndex = 0;
 
 		const rotateFramework = () => {
-			setCurrentFramework(characterNames[currentIndex]);
+			setCurrentItem(characterNames[currentIndex]);
 			currentIndex = (currentIndex + 1) % characterNames.length;
 		};
 
@@ -104,15 +102,15 @@ export default function Home() {
 						className={cn(
 							"text-black px-4 py-3 rounded-md text-xl font-semibold transition-all duration-500 active:scale-90 !cursor-pointer",
 							{
-								"bg-[#62a0f7]": currentFramework === "badge",
-								"bg-[#2bc7ee]": currentFramework === "cover",
-								"bg-[#06f27c]": currentFramework === "erenGreen",
-								"bg-orange-500": currentFramework === "leviOrange",
-								"bg-[#ff0c0c]": currentFramework === "mikasa",
-								"bg-[#ff6a00]": currentFramework === "levi",
-								"bg-[#ffffff]": currentFramework === "mappa",
-								"bg-[#d001f4]": currentFramework === "erenPurple",
-								"bg-[#f4af01]": currentFramework === "annie",
+								"bg-[#62a0f7]": currentItem === "badge",
+								"bg-[#2bc7ee]": currentItem === "cover",
+								"bg-[#06f27c]": currentItem === "erenGreen",
+								"bg-orange-500": currentItem === "leviOrange",
+								"bg-[#ff0c0c]": currentItem === "mikasa",
+								"bg-[#ff6a00]": currentItem === "levi",
+								"bg-[#ffffff]": currentItem === "mappa",
+								"bg-[#d001f4]": currentItem === "erenPurple",
+								"bg-[#f4af01]": currentItem === "annie",
 							}
 						)}
 					>
@@ -124,15 +122,15 @@ export default function Home() {
 					className={cn(
 						"fixed inset-0 transition-colors delay-100 duration-700 opacity-50 ",
 						{
-							"bg-[#62a0f7]": currentFramework === "badge",
-							"bg-[#2bc7ee]": currentFramework === "cover",
-							"bg-[#06f27c]": currentFramework === "erenGreen",
-							"bg-orange-500": currentFramework === "leviOrange",
-							"bg-[#ff0c0c]": currentFramework === "mikasa",
-							"bg-[#ff6a00]": currentFramework === "levi",
-							"bg-[#ffffff]": currentFramework === "mappa",
-							"bg-[#d001f4]": currentFramework === "erenPurple",
-							"bg-[#f4af01]": currentFramework === "annie",
+							"bg-[#62a0f7]": currentItem === "badge",
+							"bg-[#2bc7ee]": currentItem === "cover",
+							"bg-[#06f27c]": currentItem === "erenGreen",
+							"bg-orange-500": currentItem === "leviOrange",
+							"bg-[#ff0c0c]": currentItem === "mikasa",
+							"bg-[#ff6a00]": currentItem === "levi",
+							"bg-[#ffffff]": currentItem === "mappa",
+							"bg-[#d001f4]": currentItem === "erenPurple",
+							"bg-[#f4af01]": currentItem === "annie",
 						}
 					)}
 				/>
@@ -163,14 +161,11 @@ export default function Home() {
 						<h2
 							className={`text-5xl max-[400px]:text-3xl lg:text-7xl max-w-3xl lg:max-w-6xl xl:max-w-7xl flex flex-col  items-center leading-snug mb-6 font-bold   justify-center`}
 						>
-							<FrameRotation currentFramework={currentFramework} key={1} />
+							<ItemRotation currentItem={currentItem} key={1} />
 							<span className="countdown uppercase">Countdown to </span>
 						</h2>
-						<MainHeading
-							currentFramework={currentFramework}
-							text="Attack On titan!"
-						/>
-						<Description text="MAPPA!" currentFramework={currentFramework} />
+						<MainHeading currentItem={currentItem} text="Attack On titan!" />
+						<Description text="MAPPA!" currentItem={currentItem} />
 						<div
 							className="2xl:mb-8 mb-4"
 							onClick={() => {
@@ -187,15 +182,15 @@ export default function Home() {
 								className={cn(
 									"text-black px-6 py-3 rounded-md text-sm font-semibold transition-all duration-500 active:scale-90 !cursor-pointer",
 									{
-										"bg-[#62a0f7]": currentFramework === "badge",
-										"bg-[#2bc7ee]": currentFramework === "cover",
-										"bg-[#06f27c]": currentFramework === "erenGreen",
-										"bg-orange-500": currentFramework === "leviOrange",
-										"bg-[#ff0c0c]": currentFramework === "mikasa",
-										"bg-[#ff6a00]": currentFramework === "levi",
-										"bg-[#ffffff]": currentFramework === "mappa",
-										"bg-[#d001f4]": currentFramework === "erenPurple",
-										"bg-[#f4af01]": currentFramework === "annie",
+										"bg-[#62a0f7]": currentItem === "badge",
+										"bg-[#2bc7ee]": currentItem === "cover",
+										"bg-[#06f27c]": currentItem === "erenGreen",
+										"bg-orange-500": currentItem === "leviOrange",
+										"bg-[#ff0c0c]": currentItem === "mikasa",
+										"bg-[#ff6a00]": currentItem === "levi",
+										"bg-[#ffffff]": currentItem === "mappa",
+										"bg-[#d001f4]": currentItem === "erenPurple",
+										"bg-[#f4af01]": currentItem === "annie",
 									}
 								)}
 							>
@@ -208,10 +203,7 @@ export default function Home() {
 							hideTimer ? "opacity-0 pointer-events-none " : "opacity-100"
 						}`}
 					>
-						<CountdownTimer
-							isLight={isLight}
-							currentFramework={currentFramework}
-						/>
+						<CountdownTimer isLight={isLight} currentItem={currentItem} />
 					</div>
 				</div>
 				<div
@@ -248,15 +240,15 @@ export default function Home() {
 					<Link href="https://github.com/kleenpulse" target="_blank">
 						<strong
 							className={cn("transition-colors duration-300 ml-1", {
-								"text-[#62a0f7]": currentFramework === "badge",
-								"text-[#2bc7ee]": currentFramework === "cover",
-								"text-[#06f27c]": currentFramework === "erenGreen",
-								"text-orange-500": currentFramework === "leviOrange",
-								"text-[#ff0c0c]": currentFramework === "mikasa",
-								"text-[#ff6a00]": currentFramework === "levi",
-								"text-[#ffffff]": currentFramework === "mappa",
-								"text-[#d001f4]": currentFramework === "erenPurple",
-								"text-[#f4af01]": currentFramework === "annie",
+								"text-[#62a0f7]": currentItem === "badge",
+								"text-[#2bc7ee]": currentItem === "cover",
+								"text-[#06f27c]": currentItem === "erenGreen",
+								"text-orange-500": currentItem === "leviOrange",
+								"text-[#ff0c0c]": currentItem === "mikasa",
+								"text-[#ff6a00]": currentItem === "levi",
+								"text-[#ffffff]": currentItem === "mappa",
+								"text-[#d001f4]": currentItem === "erenPurple",
+								"text-[#f4af01]": currentItem === "annie",
 							})}
 						>
 							Vxrcel

@@ -1,20 +1,15 @@
-import { characters, icons } from "@/public";
-import {
-	Character,
-	Framework,
-	characterNames,
-	frameWorks,
-} from "@/utils/framework";
+import { characters } from "@/public";
+import { Character, characterNames } from "@/utils/items";
 import { cn } from "@/utils/tailwind-utils";
 import Image from "next/image";
 import React, { useState } from "react";
 import LoadingSpinner from "./LoadingSpinner";
 
-const FrameRotation = ({
-	currentFramework,
+const ItemRotation = ({
+	currentItem,
 	isDesc,
 }: {
-	currentFramework: Framework | Character;
+	currentItem: Character;
 	isDesc?: boolean;
 }) => {
 	const [isLoading, setIsLoading] = useState(true);
@@ -38,9 +33,9 @@ const FrameRotation = ({
 						onLoad={() => setIsLoading(false)}
 						className={cn(
 							"w-full h-full object-contain object-center absolute top-0 left-0 transition-all duration-500 hue-hover",
-							currentFramework === name
+							currentItem === name
 								? "opacity-100 transform-none"
-								: index > characterNames.indexOf(currentFramework as Character)
+								: index > characterNames.indexOf(currentItem as Character)
 								? "opacity-0 -translate-y-8"
 								: "opacity-0 translate-y-8",
 							isDesc ? "rounded-lg" : "rounded-xl"
@@ -50,10 +45,9 @@ const FrameRotation = ({
 						<div
 							className={cn(
 								" absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300",
-								currentFramework === name
+								currentItem === name
 									? "opacity-100 "
-									: index >
-									  characterNames.indexOf(currentFramework as Character)
+									: index > characterNames.indexOf(currentItem as Character)
 									? "opacity-0 -translate-y-2"
 									: "opacity-0 translate-y-2",
 								isDesc ? "scale-70" : ""
@@ -68,4 +62,4 @@ const FrameRotation = ({
 	);
 };
 
-export default FrameRotation;
+export default ItemRotation;

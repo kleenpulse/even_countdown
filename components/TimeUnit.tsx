@@ -1,4 +1,4 @@
-import { Character, type Framework } from "@/utils/framework";
+import { type Character } from "@/utils/items";
 import { cn } from "@/utils/tailwind-utils";
 import React from "react";
 import NumberRotation from "./NumberRotation";
@@ -6,9 +6,9 @@ import NumberRotation from "./NumberRotation";
 type Props = {
 	label: string;
 	value: number;
-	currentFramework: Framework | Character;
+	currentItem: Character;
 };
-const TimeUnit = ({ label, value, currentFramework }: Props) => {
+const TimeUnit = ({ label, value, currentItem }: Props) => {
 	return (
 		<div className="flex flex-col">
 			<div className="text-white text-5xl lg:text-9xl font-semibold max-[333px]:text-7xl">
@@ -16,15 +16,15 @@ const TimeUnit = ({ label, value, currentFramework }: Props) => {
 			</div>
 			<div
 				className={cn("text-lg lg:text-xl font-medium", {
-					"text-[#62a0f7]": currentFramework === "badge",
-					"text-[#2bc7ee]": currentFramework === "cover",
-					"text-[#06f27c]": currentFramework === "erenGreen",
-					"text-orange-500": currentFramework === "leviOrange",
-					"text-[#ff0c0c]": currentFramework === "mikasa",
-					"text-[#ff6a00]": currentFramework === "levi",
-					"text-[#ffffff]": currentFramework === "mappa",
-					"text-[#d001f4]": currentFramework === "erenPurple",
-					"text-[#f4af01]": currentFramework === "annie",
+					"text-[#62a0f7]": currentItem === "badge",
+					"text-[#2bc7ee]": currentItem === "cover",
+					"text-[#06f27c]": currentItem === "erenGreen",
+					"text-orange-500": currentItem === "leviOrange",
+					"text-[#ff0c0c]": currentItem === "mikasa",
+					"text-[#ff6a00]": currentItem === "levi",
+					"text-[#ffffff]": currentItem === "mappa",
+					"text-[#d001f4]": currentItem === "erenPurple",
+					"text-[#f4af01]": currentItem === "annie",
 				})}
 			>
 				{label}
