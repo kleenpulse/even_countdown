@@ -1,12 +1,8 @@
-"use client";
-
-import { calculateTimeToEvent } from "@/utils/countdown";
 import { type Character } from "@/utils/items";
-import { useEffect, useMemo, useState } from "react";
+
 import TimeUnit from "./TimeUnit";
 import { cn } from "@/utils/tailwind-utils";
-
-const DATE = "2023-11-04T16:00:00";
+import { useTimeCtx } from "@/TimeContext";
 
 const CountdownTimer = ({
 	currentItem,
@@ -15,16 +11,10 @@ const CountdownTimer = ({
 	currentItem: Character;
 	isLight?: boolean;
 }) => {
-	const [countdown, setCountdown] = useState(calculateTimeToEvent(DATE));
+	const { countdown, eventTime } = useTimeCtx();
 
-	useEffect(() => {
-		const invertalId = setInterval(() => {
-			setCountdown(calculateTimeToEvent(DATE));
-		}, 1000);
-
-		return () => clearInterval(invertalId);
-	}, []);
-
+	// console.log(countdown.timeToEvent);
+	console.log(eventTime);
 	return (
 		<div
 			className={cn(
@@ -45,20 +35,24 @@ const CountdownTimer = ({
 					: "bg-opacity-10 hover:backdrop-blur-sm"
 			)}
 		>
-			<TimeUnit label="DAYS" value={countdown.days} currentItem={currentItem} />
+			<TimeUnit
+				label="DAYS"
+				value={eventTime ? 0 : countdown.days}
+				currentItem={currentItem}
+			/>
 			<TimeUnit
 				label="HOURS"
-				value={countdown.hours}
+				value={eventTime ? 0 : countdown.hours}
 				currentItem={currentItem}
 			/>
 			<TimeUnit
 				label="MINUTES"
-				value={countdown.minutes}
+				value={eventTime ? 0 : countdown.minutes}
 				currentItem={currentItem}
 			/>
 			<TimeUnit
 				label="SECONDS"
-				value={countdown.seconds}
+				value={eventTime ? 0 : countdown.seconds}
 				currentItem={currentItem}
 			/>
 		</div>

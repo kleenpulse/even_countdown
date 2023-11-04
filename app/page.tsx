@@ -13,28 +13,41 @@ import MainHeading from "@/components/MainHeading";
 import Description from "@/components/Description";
 import ItemRotation from "@/components/ItemRotation";
 import Link from "next/link";
+import { useTimeCtx } from "@/TimeContext";
+import dynamic from "next/dynamic";
+import useWindowSize from "react-use/lib/useWindowSize";
+
+const Confetti = dynamic(() => import("react-confetti"), { ssr: false });
 
 export default function Home() {
+	const { eventTime } = useTimeCtx();
+	const isTime = eventTime;
+	const { width, height } = useWindowSize();
+
 	const [isLoading, setIsLoading] = useState(true);
+	const [hideTimer, sethideTimer] = useState(() => {
+		if (isTime) {
+			return false;
+		}
+		return true;
+	});
 	const [isLight, setIsLight] = useState(false);
 
 	const bottomRef = useRef<HTMLDivElement>(null);
 
-	// useEffect(() => {
-	// 	const getLoaded = localStorage.getItem("loaded");
-	// 	if (getLoaded === "true") {
-	// 		setIsLoading(false);
-	// 	}
-	// 	setTimeout(() => {
-	// 		setIsLoading(false);
-	// 		localStorage.setItem("loaded", "true");
-	// 	}, 5000);
-	// }, []);
 	const [currentItem, setCurrentItem] = useState<Character>(characterNames[0]);
 	const [showBG, setShowBG] = useState(false);
-	const [hideTimer, sethideTimer] = useState(true);
 
 	useEffect(() => {
+		const getLoaded = localStorage.getItem("loaded");
+		if (getLoaded === "true") {
+			setIsLoading(false);
+		}
+		setTimeout(() => {
+			setIsLoading(false);
+			localStorage.setItem("loaded", "true");
+		}, 5000);
+
 		let currentIndex = 0;
 
 		const rotateFramework = () => {
@@ -84,23 +97,27 @@ export default function Home() {
 		<Loading />
 	) : (
 		<>
-			{/* <div
+			{isTime && (
+				<div className="fixed inset-0 w-full min-h-screen z-[9999999] pointer-events-none">
+					<Confetti numberOfPieces={500} width={width} height={height} />
+				</div>
+			)}
+			<div
 				className={cn(
-					" pointer-events-none  fixed inset-0 h-[500px] w-[500px] lg:h-[600px] lg:w-[600px] xl:h-[700px] xl:w-[700px]  rounded-full blur-[60px] brightness-[10000%] bg-white  z-[99] opacity-20"
+					" pointer-events-none  fixed inset-0 h-[500px] w-[500px] lg:h-[600px] lg:w-[600px] xl:h-[700px] xl:w-[700px]  rounded-full blur-[60px] brightness-[10000%] bg-white  "
 				)}
 				style={{
 					left: `${x}px`,
 					top: `${y}px`,
 					transform: "translate(-50%, -50%)",
 				}}
-			/> */}
+			/>
 			<main className="relative h-full w-full">
-				<div className="text-white/20 text-lg sm:text-2xl relative z-30 w-full hidden sm:flex justify-between px-4 select-none hover:text-gray-300 transition-colors duration-700 py-2 group/mouse ">
-					<p>MouseX:{x}</p>
+				<div className="text-white/20 text-lg sm:text-2xl relative z-30 w-full hidden sm:flex justify-center px-4 select-none hover:text-gray-300 transition-colors duration-700 py-2 group/mouse ">
 					<button
 						onClick={() => setIsLight(!isLight)}
 						className={cn(
-							"text-black px-4 py-3 rounded-md text-xl font-semibold transition-all duration-500 active:scale-90 !cursor-pointer",
+							"text-white px-4 py-3 rounded-md text-xl font-semibold transition-all duration-500 active:scale-90 !cursor-pointer bg-opacity-20",
 							{
 								"bg-[#62a0f7]": currentItem === "badge",
 								"bg-[#2bc7ee]": currentItem === "cover",
@@ -116,7 +133,6 @@ export default function Home() {
 					>
 						{!isLight ? "Use Torch" : "Off Torch"}
 					</button>
-					<p>MouseY:{y}</p>
 				</div>
 				<div
 					className={cn(
@@ -163,7 +179,11 @@ export default function Home() {
 							className={`text-5xl max-[400px]:text-3xl lg:text-7xl max-w-3xl lg:max-w-6xl xl:max-w-7xl flex flex-col  items-center leading-snug mb-6 font-bold   justify-center`}
 						>
 							<ItemRotation currentItem={currentItem} key={1} />
-							<span className="countdown uppercase">Countdown to </span>
+							{isTime ? (
+								<span className="countdown uppercase">Its Time!!! </span>
+							) : (
+								<span className="countdown uppercase">Countdown to </span>
+							)}
 						</h2>
 						<MainHeading currentItem={currentItem} text="Attack On titan!" />
 						<Description text="MAPPA!" currentItem={currentItem} />
@@ -192,7 +212,8 @@ export default function Home() {
 										"bg-[#ffffff]": currentItem === "mappa",
 										"bg-[#d001f4]": currentItem === "erenPurple",
 										"bg-[#f4af01]": currentItem === "annie",
-									}
+									},
+									isTime ? "hidden" : ""
 								)}
 							>
 								{hideTimer ? "Show Timer" : "Hide Timer"}
@@ -200,9 +221,12 @@ export default function Home() {
 						</div>
 					</div>
 					<div
-						className={`mb-10 transition-all duration-500 ${
-							hideTimer ? "opacity-0 pointer-events-none " : "opacity-100"
-						}`}
+						className={cn(
+							"mb-10 transition-all duration-500",
+							!isTime && hideTimer
+								? "opacity-0 pointer-events-none "
+								: "opacity-100"
+						)}
 					>
 						<CountdownTimer isLight={isLight} currentItem={currentItem} />
 					</div>
@@ -229,34 +253,33 @@ export default function Home() {
 						className=" grayscale transition-all duration-1000 hover:duration-0"
 					/>
 				</div>
-
-				<div
-					className={cn(
-						"absolute bottom-0 w-full flex justify-center z-40",
-						hideTimer && "opacity-0"
-					)}
-					ref={bottomRef}
-				>
-					Made with 💙
-					<Link href="https://github.com/kleenpulse" target="_blank">
-						<strong
-							className={cn("transition-colors duration-300 ml-1", {
-								"text-[#62a0f7]": currentItem === "badge",
-								"text-[#2bc7ee]": currentItem === "cover",
-								"text-[#06f27c]": currentItem === "erenGreen",
-								"text-orange-500": currentItem === "leviOrange",
-								"text-[#ff0c0c]": currentItem === "mikasa",
-								"text-[#ff6a00]": currentItem === "levi",
-								"text-[#ffffff]": currentItem === "mappa",
-								"text-[#d001f4]": currentItem === "erenPurple",
-								"text-[#f4af01]": currentItem === "annie",
-							})}
-						>
-							Vxrcel
-						</strong>
-					</Link>
-				</div>
 			</main>
+			<div
+				className={cn(
+					"absolute bottom-0 w-full flex justify-center z-40",
+					hideTimer && "opacity-0"
+				)}
+				ref={bottomRef}
+			>
+				Made with 💙
+				<Link href="https://github.com/kleenpulse" target="_blank">
+					<strong
+						className={cn("transition-colors duration-300 ml-1", {
+							"text-[#62a0f7]": currentItem === "badge",
+							"text-[#2bc7ee]": currentItem === "cover",
+							"text-[#06f27c]": currentItem === "erenGreen",
+							"text-orange-500": currentItem === "leviOrange",
+							"text-[#ff0c0c]": currentItem === "mikasa",
+							"text-[#ff6a00]": currentItem === "levi",
+							"text-[#ffffff]": currentItem === "mappa",
+							"text-[#d001f4]": currentItem === "erenPurple",
+							"text-[#f4af01]": currentItem === "annie",
+						})}
+					>
+						Vxrcel
+					</strong>
+				</Link>
+			</div>
 		</>
 	);
 }

@@ -1,15 +1,23 @@
 import React from "react";
-import ItemRotation from "./ItemRotation";
+
 import { cn } from "@/utils/tailwind-utils";
 import { Character } from "@/utils/items";
+import { useTimeCtx } from "@/TimeContext";
 
 type Props = {
 	currentItem: Character;
 	text: string;
 };
 const Description = ({ currentItem, text }: Props) => {
+	const { countdown } = useTimeCtx();
+	const { isTime } = countdown;
 	return (
-		<p className="max-w-2xl text-centers text-lg lg:text-xl mb-8 max-sm:flex flex-col items-center gap-3">
+		<p
+			className={cn(
+				"max-w-2xl text-centers text-lg lg:text-xl mb-8 max-sm:flex flex-col items-center gap-3",
+				isTime ? "hidden" : ""
+			)}
+		>
 			<span>
 				An <b>Attack on Titan</b> event by{" "}
 				<strong

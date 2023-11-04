@@ -13,6 +13,7 @@ const ItemRotation = ({
 	isDesc?: boolean;
 }) => {
 	const [isLoading, setIsLoading] = useState(true);
+
 	return (
 		<div
 			className={cn(
@@ -23,13 +24,12 @@ const ItemRotation = ({
 			)}
 		>
 			{characterNames.map((name, index) => (
-				<>
+				<div key={characters[name]}>
 					<Image
 						src={characters[name]}
 						alt={name}
 						width={isDesc ? 80 : 259}
 						height={isDesc ? 80 : 259}
-						key={name}
 						onLoad={() => setIsLoading(false)}
 						className={cn(
 							"w-full h-full object-contain object-center absolute top-0 left-0 transition-all duration-500 hue-hover",
@@ -56,7 +56,7 @@ const ItemRotation = ({
 							<LoadingSpinner isDesc={isDesc} />
 						</div>
 					)}
-				</>
+				</div>
 			))}
 		</div>
 	);
