@@ -20,16 +20,16 @@ export default function Home() {
 
 	const bottomRef = useRef<HTMLDivElement>(null);
 
-	useEffect(() => {
-		const getLoaded = localStorage.getItem("loaded");
-		if (getLoaded === "true") {
-			setIsLoading(false);
-		}
-		setTimeout(() => {
-			setIsLoading(false);
-			localStorage.setItem("loaded", "true");
-		}, 5000);
-	}, []);
+	// useEffect(() => {
+	// 	const getLoaded = localStorage.getItem("loaded");
+	// 	if (getLoaded === "true") {
+	// 		setIsLoading(false);
+	// 	}
+	// 	setTimeout(() => {
+	// 		setIsLoading(false);
+	// 		localStorage.setItem("loaded", "true");
+	// 	}, 5000);
+	// }, []);
 	const [currentItem, setCurrentItem] = useState<Character>(characterNames[0]);
 	const [showBG, setShowBG] = useState(false);
 	const [hideTimer, sethideTimer] = useState(true);

@@ -9,7 +9,9 @@ const LoadingSpinner = ({ color, innerColor, isDesc }: Props) => (
 	<div
 		className={cn(
 			"relative  fade-loader",
-			isDesc ? "h-9 w-9" : " lg:h-20 lg:w-20 min-[500px]:h-12 min-[500px]:w-12"
+			isDesc
+				? "h-9 w-9"
+				: " lg:h-20 lg:w-20 min-[500px]:h-12 min-[500px]:w-12 w-9 h-9"
 		)}
 	>
 		<div

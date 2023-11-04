@@ -8,7 +8,7 @@ const nextConfig = {
 
             }
         ],
-        domains: ['cdn.builder.io'],
+
 
     }
 }

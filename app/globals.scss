@@ -95,12 +95,12 @@ body {
 }
 .loader span {
 	color: var(--loader);
-	font-size: 3rem;
+	font-size: 2rem;
 	text-shadow: 0 0 0 var(--loader);
 	animation: loading 2s ease-in-out infinite alternate;
 
-	@media screen and (min-width: 500px) {
-		font-size: 5rem;
+	@media screen and (min-width: 600px) {
+		font-size: 4rem;
 	}
 	@media screen and (min-width: 1200px) {
 		font-size: 7rem;
