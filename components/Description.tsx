@@ -9,8 +9,8 @@ type Props = {
 	text: string;
 };
 const Description = ({ currentItem, text }: Props) => {
-	const { countdown } = useTimeCtx();
-	const { isTime } = countdown;
+	const { countdown, eventTime } = useTimeCtx();
+	const isTime = eventTime;
 	return (
 		<p
 			className={cn(
