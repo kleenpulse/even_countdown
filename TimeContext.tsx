@@ -27,8 +27,8 @@ interface TimeContextProps {
 
 const TimeContext = createContext<TimeContextProps>({} as TimeContextProps);
 
-const DATE = "2023-11-04T14:17:50";
-// const DATE = "2023-11-04T16:00:00";
+// const DATE = "2023-11-04T14:17:50";
+const DATE = "2023-11-04T16:00:00";
 
 const TimeContextProvider = ({ children }: { children: React.ReactNode }) => {
 	const [eventTime, setEventTime] = useState(false);
