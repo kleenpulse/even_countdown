@@ -9,7 +9,7 @@ type Props = {
 	text: string;
 };
 const Description = ({ currentItem, text }: Props) => {
-	const { countdown, eventTime } = useTimeCtx();
+	const { eventTime } = useTimeCtx();
 	const isTime = eventTime;
 	return (
 		<p

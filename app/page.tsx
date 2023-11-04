@@ -20,6 +20,8 @@ import useWindowSize from "react-use/lib/useWindowSize";
 const Confetti = dynamic(() => import("react-confetti"), { ssr: false });
 
 export default function Home() {
+	const [isVideo, setIsVideo] = useState(false);
+
 	const { eventTime } = useTimeCtx();
 	const isTime = eventTime;
 	const { width, height } = useWindowSize();
@@ -32,6 +34,14 @@ export default function Home() {
 		return true;
 	});
 	const [isLight, setIsLight] = useState(false);
+
+	useEffect(() => {
+		if (isTime) {
+			setTimeout(() => {
+				setIsVideo(true);
+			}, 5000);
+		}
+	}, [isTime]);
 
 	const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -187,6 +197,34 @@ export default function Home() {
 						</h2>
 						<MainHeading currentItem={currentItem} text="Attack On titan!" />
 						<Description text="MAPPA!" currentItem={currentItem} />
+						{isVideo && (
+							<div
+								className="2xl:mb-8 mb-4 loader-con"
+								role="dialog"
+								tabIndex={0}
+							>
+								<Link
+									href="https://aniwave.to/watch/attack-on-titan-the-final-season-part-3.ll3mm/ep-1"
+									target="_blank"
+									className={cn(
+										"text-black px-6 py-3 rounded-md text-sm sm:text-3xl xl:text-4xl font-semibold transition-all duration-500 active:scale-90 !cursor-pointer uppercase ",
+										{
+											"bg-[#62a0f7]": currentItem === "badge",
+											"bg-[#2bc7ee]": currentItem === "cover",
+											"bg-[#06f27c]": currentItem === "erenGreen",
+											"bg-orange-500": currentItem === "leviOrange",
+											"bg-[#ff0c0c]": currentItem === "mikasa",
+											"bg-[#ff6a00]": currentItem === "levi",
+											"bg-[#ffffff]": currentItem === "mappa",
+											"bg-[#d001f4]": currentItem === "erenPurple",
+											"bg-[#f4af01]": currentItem === "annie",
+										}
+									)}
+								>
+									Watch Finale!
+								</Link>
+							</div>
+						)}
 						<div
 							className="2xl:mb-8 mb-4"
 							onClick={() => {

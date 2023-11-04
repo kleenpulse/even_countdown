@@ -32,6 +32,15 @@
 	}
 	@media screen and (min-width: 1200px) {
 		background: radial-gradient(
+			circle 400px at var(--cursorX) var(--cursorY),
+			rgba(0, 0, 0, 0) 0%,
+			rgba(0, 0, 0, 0.5) 80%,
+			rgba(0, 0, 0, 0.99) 100%
+		);
+	}
+
+	@media screen and (min-width: 1600px) {
+		background: radial-gradient(
 			circle 500px at var(--cursorX) var(--cursorY),
 			rgba(0, 0, 0, 0) 0%,
 			rgba(0, 0, 0, 0.5) 80%,
