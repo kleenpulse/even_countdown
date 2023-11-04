@@ -6,7 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import TimeUnit from "./TimeUnit";
 import { cn } from "@/utils/tailwind-utils";
 
-const DATE = "2023-11-04T12:00:00";
+const DATE = "2023-11-04T16:00:00";
 
 const CountdownTimer = ({
 	currentItem,
