@@ -291,33 +291,33 @@ export default function Home() {
 						className=" grayscale transition-all duration-1000 hover:duration-0"
 					/>
 				</div>
+				<div
+					className={cn(
+						" w-full flex relative  justify-center z-40",
+						hideTimer && "opacity-0"
+					)}
+					ref={bottomRef}
+				>
+					Made with 💙
+					<Link href="https://github.com/kleenpulse" target="_blank">
+						<strong
+							className={cn("transition-colors duration-300 ml-1", {
+								"text-[#62a0f7]": currentItem === "badge",
+								"text-[#2bc7ee]": currentItem === "cover",
+								"text-[#06f27c]": currentItem === "erenGreen",
+								"text-orange-500": currentItem === "leviOrange",
+								"text-[#ff0c0c]": currentItem === "mikasa",
+								"text-[#ff6a00]": currentItem === "levi",
+								"text-[#ffffff]": currentItem === "mappa",
+								"text-[#d001f4]": currentItem === "erenPurple",
+								"text-[#f4af01]": currentItem === "annie",
+							})}
+						>
+							Vxrcel
+						</strong>
+					</Link>
+				</div>
 			</main>
-			<div
-				className={cn(
-					"absolute bottom-0 w-full flex justify-center z-40",
-					hideTimer && "opacity-0"
-				)}
-				ref={bottomRef}
-			>
-				Made with 💙
-				<Link href="https://github.com/kleenpulse" target="_blank">
-					<strong
-						className={cn("transition-colors duration-300 ml-1", {
-							"text-[#62a0f7]": currentItem === "badge",
-							"text-[#2bc7ee]": currentItem === "cover",
-							"text-[#06f27c]": currentItem === "erenGreen",
-							"text-orange-500": currentItem === "leviOrange",
-							"text-[#ff0c0c]": currentItem === "mikasa",
-							"text-[#ff6a00]": currentItem === "levi",
-							"text-[#ffffff]": currentItem === "mappa",
-							"text-[#d001f4]": currentItem === "erenPurple",
-							"text-[#f4af01]": currentItem === "annie",
-						})}
-					>
-						Vxrcel
-					</strong>
-				</Link>
-			</div>
 		</>
 	);
 }
