@@ -172,7 +172,7 @@ export default function Home() {
 						}
 					)}
 				>
-					<div className="text-white/20 text-lg sm:text-2xl relative z-30 w-full hidden sm:flex justify-center px-4 select-none hover:text-gray-300 transition-colors duration-700 py-2 group/mouse ">
+					<div className="text-white/20 text-lg sm:text-2xl relative z-30 w-full hidden sm:flex justify-center px-4 select-none hover:text-gray-300 transition-colors duration-700 py-2 group/mouse md:absolute top-0">
 						<Button
 							isLight={isLight}
 							onClick={() => setIsLight(!isLight)}
@@ -268,7 +268,7 @@ export default function Home() {
 				<div
 					className={cn(
 						"hover:opacity-100 fixed top-2 right-0 z-[1] lg:z-[999] opacity-70 xl:opacity-100 transition-all duration-500  group/frame ",
-						!isLight ? "block max-sm:hidden" : " hidden"
+						!isLight ? "block max-[390px]:hidden" : " hidden"
 					)}
 				>
 					<Image
@@ -282,7 +282,7 @@ export default function Home() {
 				<div
 					className={cn(
 						"hover:opacity-100 fixed top-2 left-0 z-[1] lg:z-[999] opacity-70 xl:opacity-100 transition-all duration-500  group/frame scale-x-[-1]",
-						!isLight ? "block max-sm:hidden" : " hidden"
+						!isLight ? "block max-[390px]:hidden" : " hidden"
 					)}
 				>
 					<Image
