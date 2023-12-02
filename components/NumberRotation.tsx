@@ -18,7 +18,7 @@ const NumberRotation = ({ number }: { number: number }) => {
 				<div
 					key={num}
 					className={cn(
-						"w-fit h-full absolute transition-all duration-300 bg-gradient-to-tr from-[#006eff] to-[#06f27c]  bg-clip-text text-transparent",
+						"w-fit h-full absolute transition-all duration-300 text-white/90 sm:text-6xl lg:text-8xl",
 						getClass(num)
 					)}
 				>

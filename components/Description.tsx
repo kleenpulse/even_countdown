@@ -19,7 +19,7 @@ const Description = ({ currentItem, text }: Props) => {
 			)}
 		>
 			<span>
-				An <b>Attack on Titan</b> event by{" "}
+				An <b>Happy Xmas</b> event by{" "}
 				<strong
 					className={cn("transition-colors duration-300", {
 						"text-[#62a0f7]": currentItem === "badge",

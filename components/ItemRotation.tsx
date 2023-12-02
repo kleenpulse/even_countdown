@@ -32,7 +32,7 @@ const ItemRotation = ({
 						height={isDesc ? 80 : 259}
 						onLoad={() => setIsLoading(false)}
 						className={cn(
-							"w-full h-full object-contain object-center absolute top-0 left-0 transition-all duration-500 hue-hover",
+							"w-full h-full object-cover object-center absolute top-0 left-0 transition-all duration-500 hue-hover",
 							currentItem === name
 								? "opacity-100 transform-none"
 								: index > characterNames.indexOf(currentItem as Character)

@@ -27,7 +27,7 @@ const MainHeading = ({ currentItem, text }: Props) => {
 					},
 					text.length > 17
 						? "xl:text-7xl min-[920px]:text-6xl sm:text-4xl text-3xl max-[460px]:text-2xl max-[368px]:text-xl"
-						: "2xl:text-[120px] xl:text-[100px] lg:text-8xl md:text-7xl sm:text-6xl text-[30px] max-[368px]:text-2xl"
+						: "2xl:text-[120px] xl:text-[100px] lg:text-8xl md:text-7xl sm:text-6xl text-3xl "
 				)}
 				data-value={text}
 				onMouseEnter={handleMouse}

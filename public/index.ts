@@ -9,13 +9,13 @@ export const icons = {
 };
 
 export const characters = {
-	erenGreen: "/eren-green.png",
-	annie: "/annie.png",
-	cover: "/cover.png",
-	badge: "/badge.png",
-	erenPurple: "/eren-purple.png",
-	levi: "/levi.png",
-	mappa: "/mappa.png",
-	mikasa: "/mikasa.png",
-	leviOrange: "/levi-orange.png",
+	erenGreen: "/xmas-green.png",
+	annie: "/xmas-orange.png",
+	cover: "/xmas-cyan.png",
+	badge: "/xmas-blue.png",
+	erenPurple: "/xmas-eren-purple.png",
+	levi: "/xmas-purple.png",
+	mappa: "/xmas-white.png",
+	mikasa: "/xmas-red.png",
+	leviOrange: "/xmas-brown.png",
 };

@@ -24,5 +24,5 @@ export const handleMouse = (name: any) => {
 		}
 
 		iteration += 1 / 3;
-	}, 40);
+	}, 60);
 };
