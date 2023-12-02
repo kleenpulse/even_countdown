@@ -20,7 +20,7 @@ const ItemRotation = ({
 				"  relative z-30 mx-2 mb-5",
 				isDesc
 					? "w-[80px] h-[80px] -mt-2 inline-flex align-middle"
-					: "w-[270px] h-[270px] "
+					: "w-[320px] h-[270px] "
 			)}
 		>
 			{characterNames.map((name, index) => (
@@ -28,9 +28,14 @@ const ItemRotation = ({
 					<Image
 						src={characters[name]}
 						alt={name}
-						width={isDesc ? 80 : 259}
-						height={isDesc ? 80 : 259}
-						onLoad={() => setIsLoading(false)}
+						width={isDesc ? 80 : 300}
+						height={isDesc ? 80 : 300}
+						onLoad={() => {
+							window?.setTimeout(() => {
+								setIsLoading(false);
+							}, 1000);
+						}}
+						loading="lazy"
 						className={cn(
 							"w-full h-full object-cover object-center absolute top-0 left-0 transition-all duration-500 hue-hover",
 							currentItem === name

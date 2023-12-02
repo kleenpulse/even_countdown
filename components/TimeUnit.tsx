@@ -11,7 +11,7 @@ type Props = {
 const TimeUnit = ({ label, value, currentItem }: Props) => {
 	return (
 		<div className="flex flex-col">
-			<div className="text-white text-5xl lg:text-9xl font-semibold max-[333px]:text-7xl">
+			<div className="text-white text-5xl lg:text-6xl font-semibold max-[333px]:text-7xl">
 				<NumberRotation number={value} />
 			</div>
 			<div

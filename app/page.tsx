@@ -123,21 +123,7 @@ export default function Home() {
 					transform: "translate(-50%, -50%)",
 				}}
 			/>
-			<main className="relative sm:min-h-screen w-full xl:overflow-hidden">
-				<div className="text-white/20 text-lg sm:text-2xl relative z-30 w-full hidden sm:flex justify-center px-4 select-none hover:text-gray-300 transition-colors duration-700 py-2 group/mouse ">
-					<Button
-						isLight={isLight}
-						onClick={() => setIsLight(!isLight)}
-						currentItem={currentItem}
-						props={{
-							tabIndex: 1,
-							"aria-label": !isLight ? "Use Torch" : "Off Torch",
-						}}
-						torchBtn
-					>
-						{!isLight ? "Use Torch" : "Off Torch"}
-					</Button>
-				</div>
+			<main className="relative sm:min-h-screen w-full xl:overflow-hidden ">
 				<div
 					className={cn(
 						"fixed inset-0 transition-colors delay-100 duration-700  ",
@@ -177,10 +163,31 @@ export default function Home() {
 					)}
 				/>
 
-				<div className="max-w-7xl 2xl:mt-20 mt-4 mx-auto relative z-10 flex justify-center flex-col items-center !overflow-hidden">
+				<div
+					className={cn(
+						"max-w-7xl 2xl:pt-20 pt-4 min-h-screen mx-auto relative z-10 flex justify-center flex-col items-center !overflow-hidden ",
+						{
+							"max-md:backdrop-blur-lg": !isLight,
+						}
+					)}
+				>
+					<div className="text-white/20 text-lg sm:text-2xl relative z-30 w-full hidden sm:flex justify-center px-4 select-none hover:text-gray-300 transition-colors duration-700 py-2 group/mouse ">
+						<Button
+							isLight={isLight}
+							onClick={() => setIsLight(!isLight)}
+							currentItem={currentItem}
+							props={{
+								tabIndex: 1,
+								"aria-label": !isLight ? "Use Torch" : "Off Torch",
+							}}
+							torchBtn
+						>
+							{!isLight ? "Use Torch" : "Off Torch"}
+						</Button>
+					</div>
 					<div className="flex flex-col items-center relative z-10 ">
 						<h2
-							className={` text-5xl max-[400px]:text-3xl lg:text-7xl max-w-3xl lg:max-w-6xl xl:max-w-7xl flex flex-col  items-center leading-snug mb-6 font-bold   justify-center`}
+							className={` text-5xl max-[400px]:text-3xl lg:text-5xl xl:text-6xl 2xl:text-7xl max-w-3xl lg:max-w-6xl xl:max-w-7xl flex flex-col  items-center leading-snug mb-6 font-bold   justify-center`}
 						>
 							<ItemRotation currentItem={currentItem} key={1} />
 							{isTime ? (
@@ -259,8 +266,22 @@ export default function Home() {
 
 				<div
 					className={cn(
-						"hover:opacity-70 fixed top-2 right-0 z-[1] lg:z-[999] opacity-50 transition-all duration-500  group/frame ",
-						isLight ? "block max-sm:hidden" : " hidden"
+						"hover:opacity-100 fixed top-2 right-0 z-[1] lg:z-[999] opacity-70 xl:opacity-100 transition-all duration-500  group/frame ",
+						!isLight ? "block max-sm:hidden" : " hidden"
+					)}
+				>
+					<Image
+						src="/balloons.gif"
+						width={500}
+						height={500}
+						alt="titan"
+						className="  transition-all duration-1000 hover:duration-0"
+					/>
+				</div>
+				<div
+					className={cn(
+						"hover:opacity-100 fixed top-2 left-0 z-[1] lg:z-[999] opacity-70 xl:opacity-100 transition-all duration-500  group/frame scale-x-[-1]",
+						!isLight ? "block max-sm:hidden" : " hidden"
 					)}
 				>
 					<Image
