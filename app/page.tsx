@@ -180,7 +180,7 @@ export default function Home() {
 				<div className="max-w-7xl 2xl:mt-20 mt-4 mx-auto relative z-10 flex justify-center flex-col items-center !overflow-hidden">
 					<div className="flex flex-col items-center relative z-10 ">
 						<h2
-							className={`text-5xl max-[400px]:text-3xl lg:text-7xl max-w-3xl lg:max-w-6xl xl:max-w-7xl flex flex-col  items-center leading-snug mb-6 font-bold   justify-center`}
+							className={` text-5xl max-[400px]:text-3xl lg:text-7xl max-w-3xl lg:max-w-6xl xl:max-w-7xl flex flex-col  items-center leading-snug mb-6 font-bold   justify-center`}
 						>
 							<ItemRotation currentItem={currentItem} key={1} />
 							{isTime ? (

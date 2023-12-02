@@ -17,7 +17,7 @@ const ItemRotation = ({
 	return (
 		<div
 			className={cn(
-				"  relative z-30 mx-2 ",
+				"  relative z-30 mx-2 mb-5",
 				isDesc
 					? "w-[80px] h-[80px] -mt-2 inline-flex align-middle"
 					: "w-[270px] h-[270px] "
