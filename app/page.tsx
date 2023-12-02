@@ -167,7 +167,8 @@ export default function Home() {
 					className={cn(
 						"max-w-7xl 2xl:pt-20 pt-4 min-h-screen mx-auto relative z-10 flex justify-center flex-col items-center !overflow-hidden ",
 						{
-							"max-md:backdrop-blur-lg": !isLight,
+							"max-md:backdrop-blur-lg max-[390px]:backdrop-blur-none":
+								!isLight,
 						}
 					)}
 				>
