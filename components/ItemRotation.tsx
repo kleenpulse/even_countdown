@@ -20,7 +20,7 @@ const ItemRotation = ({
 				"  relative z-30 mx-2 mb-5",
 				isDesc
 					? "w-[80px] h-[80px] -mt-2 inline-flex align-middle"
-					: "w-[320px] h-[270px] "
+					: "w-[320px] h-[270px] lg:w-[500px] xl:w-[600] lg:h-[400px] aspect-video"
 			)}
 		>
 			{characterNames.map((name, index) => (
@@ -28,8 +28,8 @@ const ItemRotation = ({
 					<Image
 						src={characters[name]}
 						alt={name}
-						width={isDesc ? 80 : 300}
-						height={isDesc ? 80 : 300}
+						width={isDesc ? 80 : 600}
+						height={isDesc ? 80 : 400}
 						onLoad={() => {
 							window?.setTimeout(() => {
 								setIsLoading(false);

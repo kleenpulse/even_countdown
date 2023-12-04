@@ -23,7 +23,7 @@ const Button = ({ currentItem, props, onClick, id, children }: Props) => {
 			type="button"
 			onClick={onClick}
 			className={cn(
-				"text-white px-4 py-3 rounded-md text-xl font-semibold transition-all duration-500 active:scale-90 !cursor-pointer bg-opacity-20 outline-none border-none focus-visible:outline-2  outline-offset-2",
+				"text-white px-4 py-1 lg:py-3 rounded-md text-xl font-semibold transition-all duration-500 active:scale-90 !cursor-pointer bg-opacity-20 outline-none border-none focus-visible:outline-2  outline-offset-2",
 				{
 					"bg-[#62a0f7] focus-visible:outline-[#62a0f7]":
 						currentItem === "badge",
@@ -43,6 +43,7 @@ const Button = ({ currentItem, props, onClick, id, children }: Props) => {
 						currentItem === "erenPurple",
 					"bg-[#f4af01] focus-visible:outline-[#f4af01]":
 						currentItem === "annie",
+					"bg-[#01abf4]": currentItem === "teal",
 				}
 			)}
 		>

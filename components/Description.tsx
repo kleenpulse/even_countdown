@@ -31,6 +31,7 @@ const Description = ({ currentItem, text }: Props) => {
 						"text-[#ffffff]": currentItem === "mappa",
 						"text-[#d001f4]": currentItem === "erenPurple",
 						"text-[#f4af01]": currentItem === "annie",
+						"text-[#01d8f4]": currentItem === "teal",
 					})}
 				>
 					{text}

@@ -18,4 +18,5 @@ export const characters = {
 	mappa: "/xmas-white.png",
 	mikasa: "/xmas-red.png",
 	leviOrange: "/xmas-brown.png",
+	teal: "/xmas-teal.png",
 };

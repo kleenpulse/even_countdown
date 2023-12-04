@@ -8,6 +8,7 @@ export const characterNames = [
 	"leviOrange",
 	"mappa",
 	"mikasa",
+	"teal",
 ] as const;
 
 export type Character = (typeof characterNames)[number];

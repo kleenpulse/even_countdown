@@ -24,6 +24,7 @@ const MainHeading = ({ currentItem, text }: Props) => {
 						"text-[#e0e0e0]": currentItem === "mappa",
 						"text-[#f401bf]": currentItem === "erenPurple",
 						"text-[#f4af01]": currentItem === "annie",
+						"text-[#01d8f4]": currentItem === "teal",
 					},
 					text.length > 17
 						? "xl:text-7xl min-[920px]:text-6xl sm:text-4xl text-3xl max-[460px]:text-2xl max-[368px]:text-xl"

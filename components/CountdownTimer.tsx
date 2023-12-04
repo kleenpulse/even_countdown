@@ -19,7 +19,7 @@ const CountdownTimer = ({
 	return (
 		<div
 			className={cn(
-				"flex gap-3 text-center max-[333px]:grid grid-cols-2 max-[333px]:gap-6 max-[333px]:pb-8 px-8 rounded-xl py-4 text-white transition-all duration-500 mb-8 lg:rounded-2xl select-none   relative ",
+				"flex gap-3 text-center max-[333px]:grid grid-cols-2 max-[333px]:gap-6 max-[333px]:pb-8 px-8 rounded-xl py-4 text-white transition-all duration-500 mb-8 lg:rounded-2xl select-none   relative z-[50]",
 				{
 					"bg-[#62a0f7]": currentItem === "badge",
 					"bg-[#2bc7ee]": currentItem === "cover",

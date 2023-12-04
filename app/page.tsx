@@ -66,7 +66,7 @@ export default function Home() {
 			currentIndex = (currentIndex + 1) % characterNames.length;
 		};
 
-		const intervalId = setInterval(rotateColor, 3000);
+		const intervalId = setInterval(rotateColor, 4000);
 
 		return () => {
 			clearInterval(intervalId);
@@ -136,7 +136,8 @@ export default function Home() {
 							"bg-[#ff6a00]": currentItem === "levi",
 							"bg-[#ffffff]": currentItem === "mappa",
 							"bg-[#d001f4]": currentItem === "erenPurple",
-							"bg-[#f4af01]": currentItem === "annie",
+							"bg-[#ffb700]": currentItem === "annie",
+							"bg-[#01abf4]": currentItem === "teal",
 						},
 						isLight ? "opacity-70" : "opacity-40"
 					)}
@@ -165,9 +166,9 @@ export default function Home() {
 
 				<div
 					className={cn(
-						"max-w-7xl 2xl:pt-20 pt-4 min-h-screen mx-auto relative z-10 flex justify-center flex-col items-center !overflow-hidden ",
+						"max-w-7xl 2xl:pt-20 pt-4 min-h-screen mx-auto relative z-10 flex justify-center flex-col items-center !overflow-hidden transition-all duration-700",
 						{
-							"max-md:backdrop-blur-lg max-[390px]:backdrop-blur-none":
+							"max-[950px]:backdrop-blur-lg max-[390px]:backdrop-blur-none":
 								!isLight,
 						}
 					)}
@@ -186,9 +187,9 @@ export default function Home() {
 							{!isLight ? "Use Torch" : "Off Torch"}
 						</Button>
 					</div>
-					<div className="flex flex-col items-center relative z-10 ">
+					<div className="flex flex-col items-center relative z-10 lg:pt-16 2xl:pt-0">
 						<h2
-							className={` text-5xl max-[400px]:text-3xl lg:text-5xl xl:text-6xl 2xl:text-7xl max-w-3xl lg:max-w-6xl xl:max-w-7xl flex flex-col  items-center leading-snug mb-6 font-bold   justify-center`}
+							className={` text-5xl max-[409px]:text-3xl lg:text-5xl xl:text-6xl 2xl:text-7xl max-w-3xl lg:max-w-6xl xl:max-w-7xl flex flex-col  items-center leading-snug mb-6 font-bold   justify-center`}
 						>
 							<ItemRotation currentItem={currentItem} key={1} />
 							{isTime ? (
@@ -255,7 +256,7 @@ export default function Home() {
 					<div
 						aria-labelledby="timer"
 						className={cn(
-							"mb-10 transition-all duration-500",
+							"mb-10 transition-all duration-500 relative z-50",
 							!isTime && hideTimer
 								? "opacity-0 pointer-events-none "
 								: "opacity-100"
@@ -267,11 +268,12 @@ export default function Home() {
 
 				<div
 					className={cn(
-						"hover:opacity-100 fixed top-2 right-0 z-[1] lg:z-[999] opacity-70 xl:opacity-100 transition-all duration-500  group/frame ",
+						" hover:opacity-100 fixed top-0 right-0 z-[1] lg:z-[999] opacity-70 2xl:opacity-100 transition-all duration-500  group/frame ",
 						!isLight ? "block max-[390px]:hidden" : " hidden"
 					)}
 				>
 					<Image
+						draggable={false}
 						src="/balloons.gif"
 						width={500}
 						height={500}
@@ -281,11 +283,12 @@ export default function Home() {
 				</div>
 				<div
 					className={cn(
-						"hover:opacity-100 fixed top-2 left-0 z-[1] lg:z-[999] opacity-70 xl:opacity-100 transition-all duration-500  group/frame scale-x-[-1]",
+						" hover:opacity-100 fixed top-0 left-0 z-[1] lg:z-[999] opacity-70 2xl:opacity-100 transition-all duration-500  group/frame scale-x-[-1]",
 						!isLight ? "block max-[390px]:hidden" : " hidden"
 					)}
 				>
 					<Image
+						draggable={false}
 						src="/balloons.gif"
 						width={500}
 						height={500}
@@ -313,6 +316,7 @@ export default function Home() {
 								"text-[#ffffff]": currentItem === "mappa",
 								"text-[#d001f4]": currentItem === "erenPurple",
 								"text-[#f4af01]": currentItem === "annie",
+								"text-[#01d8f4]": currentItem === "teal",
 							})}
 						>
 							Vxrcel
@@ -320,6 +324,40 @@ export default function Home() {
 					</Link>
 				</div>
 			</main>
+			<div
+				className={cn(
+					" hover:opacity-100 fixed bottom-0 right-0 z-[1] lg:z-[999]   transition-all duration-500  group/frame w-[300px] 2xl:w-[400px]",
+					isLight
+						? "opacity-60 max-[950px]:opacity-0"
+						: " opacity-0 pointer-events-none"
+				)}
+			>
+				<Image
+					draggable={false}
+					src="/xmas-skeleton.png"
+					width={500}
+					height={500}
+					alt="titan"
+					className="  transition-all duration-1000 hover:duration-0"
+				/>
+			</div>
+			<div
+				className={cn(
+					" hover:opacity-100 fixed bottom-0 left-0 z-[1] lg:z-[999]  transition-all duration-500  group/frame w-[300px] 2xl:w-[400px]",
+					isLight
+						? "opacity-60  max-[950px]:opacity-0"
+						: " opacity-0 pointer-events-none"
+				)}
+			>
+				<Image
+					draggable={false}
+					src="/xmas-skeleton.png"
+					width={500}
+					height={500}
+					alt="titan"
+					className="  transition-all duration-1000 hover:duration-0"
+				/>
+			</div>
 		</>
 	);
 }
