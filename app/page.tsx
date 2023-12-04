@@ -32,7 +32,7 @@ export default function Home() {
 		if (isTime) {
 			return false;
 		}
-		return true;
+		return false;
 	});
 	const [isLight, setIsLight] = useState(false);
 
