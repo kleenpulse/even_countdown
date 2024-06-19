@@ -37,7 +37,7 @@ const TimeContextProvider = ({ children }: { children: React.ReactNode }) => {
 	);
 
 	useEffect(() => {
-		const getTime = localStorage.getItem("eventTime") === "true";
+		const getTime = localStorage.getItem("eventsTime") === "true";
 		console.log(eventTime);
 		if (getTime) {
 			setEventTime(true);
@@ -51,7 +51,7 @@ const TimeContextProvider = ({ children }: { children: React.ReactNode }) => {
 			return;
 		}
 		if (countdown.timeToEvent <= 1010) {
-			localStorage.setItem("eventTime", "true");
+			localStorage.setItem("eventsTime", "true");
 			setEventTime(true);
 			clearInterval(intervalId);
 			return;

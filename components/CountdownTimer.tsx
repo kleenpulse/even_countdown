@@ -13,9 +13,11 @@ const CountdownTimer = ({
 	isLight?: boolean;
 }) => {
 	const { countdown, eventTime } = useTimeCtx();
+	// convert days to month if greater than 30
+	const month = Math.floor(countdown.days / 30);
 
 	// console.log(countdown.timeToEvent);
-	console.log(eventTime);
+	console.log(month);
 	return (
 		<div
 			className={cn(
@@ -45,8 +47,8 @@ const CountdownTimer = ({
 				className="absolute top-0 -left-24 z-10 pointer-events-none"
 			/>
 			<TimeUnit
-				label="DAYS"
-				value={eventTime ? 0 : countdown.days}
+				label={countdown.days > 60 ? "MONTHS" : "DAYS"}
+				value={eventTime ? 0 : countdown.days > 60 ? month : countdown.days}
 				currentItem={currentItem}
 			/>
 			<TimeUnit
