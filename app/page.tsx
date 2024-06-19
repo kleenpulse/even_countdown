@@ -153,7 +153,7 @@ export default function Home() {
 					className="fixed inset-0  "
 					style={{
 						backgroundImage: `url('/square.svg')`,
-						backgroundSize: "40px",
+						backgroundSize: "120px",
 					}}
 				></div>
 
